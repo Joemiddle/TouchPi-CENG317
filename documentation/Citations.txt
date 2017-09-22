@@ -1,0 +1,10 @@
+@ARTICLE{6361753, 
+journal={IEEE Spectrum}, 
+title={The pen strikes back}, 
+year={2012}, 
+volume={49}, 
+number={12}, 
+pages={24-24}, 
+doi={10.1109/MSPEC.2012.6361753}, 
+ISSN={0018-9235}, 
+month={December},}
