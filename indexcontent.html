@@ -18,9 +18,10 @@
 	the same temp no matter what I do to try and change the temp.
 
 	Here is the time working
-	<img src="documentation/Capture.png" alt="Failed to load screenshot of timer."> <br>
+	<img src="documentation/Timer.JPG" alt="Failed to load screenshot of timer."> <br>
 
-	Example of the Light sensor working
+	Example of the Light sensor working<br>
+<p>
 	Greenhouse Control Loop
 Mon Dec  4 05:25:29 2017
 Readings	Temperature: 69.0C	Lights: 22.0lux
@@ -54,17 +55,18 @@ Mon Dec  4 05:25:37 2017
 Readings	Temperature: 69.0C	Lights: 22.0lux
 Setpoints	Temperature: 25C	Lights: 255 lux
 Controls	Heater: 0		Lights: 233
-
-
-	pi@joepi:~ $ sudo i2cdetect -y 1
-     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
-00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
-10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
-40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- 
-50: -- -- -- -- -- -- -- 57 -- -- -- -- -- -- -- -- 
-60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- 
+</p>
+<br>
+<br>
+	pi@joepi:~ $ sudo i2cdetect -y 1 <br>
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f <br>
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- <br>
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- <br>
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- <br>
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- <br>
+40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- <br>
+50: -- -- -- -- -- -- -- 57 -- -- -- -- -- -- -- -- <br>
+60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- <br>
 
 	This is what I saw when trying to detect the chips with out the BME280 sensor
 	
