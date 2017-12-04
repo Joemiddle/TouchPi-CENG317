@@ -16,7 +16,23 @@
 	Weekend update,
 	I managed to get VNC to work on my second Pi that isn't set up for the touch screen yet. I have the timer and the light sensor working but when I try and read the temperature I keep getting
 	the same temp no matter what I do to try and change the temp.
+
+	pi@joepi:~ $ sudo i2cdetect -y 1
+     0  1  2  3  4  5  6  7  8  9  a  b  c  d  e  f
+00:          -- -- -- -- -- -- -- -- -- -- -- -- -- 
+10: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+20: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+30: -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- 
+40: -- -- -- -- -- -- -- -- 48 -- -- -- -- -- -- -- 
+50: -- -- -- -- -- -- -- 57 -- -- -- -- -- -- -- -- 
+60: -- -- -- -- -- -- -- -- 68 -- -- -- -- -- -- -- 
+
+	This is what I saw when trying to detect the chips with out the BME280 sensor
+	
+	now I do not get 68 when I connect the sesnor. 
+	
 	 </SECTION>
+
 
 
 
