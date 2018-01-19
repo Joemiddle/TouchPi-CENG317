@@ -1,313 +1,184 @@
-# An interface board for the Broadcom development platform also known as the Raspberry Pi
+﻿# This is a project to develope a communicator that between Pis sends morse messages for a college project
 
-## Table of Contents
-1. [Student Sense Hat Specifications](#student-sense-hat-specifications)
-2. [Student Sense Hat Electronic Design Files](#student-sense-hat-electronic-design-files)
-2. [Student Sense Hat Assembly](#student-sense-hat-assembly)
-3. [Student Raspberry Pi Image Creation](#student-raspberry-pi-image-creation)
-3. [Student Sense Hat Test Code](#student-sense-hat-test-code)
-4. [Enterprise Wi-Fi](#enterprise-wi-fi)
+##Table of Contents
+1. [Introduction] Intro to Project
+2. [Cost] Cost to reproduce project
+3. [Time] Estimate of Time commitment to reproduce
+4. [Assembly] Assembly
+5. [Configuration] Configuring the Pi
+6. [Run] How to make it run
 
-![Image of Prototype](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/SSHrev05.jpg)
+![Image of Prototype](https://github.com/Joemiddle/TouchPi-CENG317/blob/master/documentation/PartsPic.jpg)
 
-### Student Sense Hat Specifications
+### Cost
 
-NOTE: This mostly through hole design is pin compatible with original mostly surface mount sense hat design which is on the devices in the Humber Parts Crib. The Fall 2017 design is in [Fritzing](https://github.com/six0four/StudentSenseHat/blob/master/electronics/StudentSenseHatV05.fzz) while the Fall 2016 design was in [Eagle](https://github.com/vladporcila/ModularSenseHatStripped). Once you have recieved your PCB the kit looks something like the following photo.
+The cost of this project varies, its possible to do this project with a single rasperry pi
+however the full functionallity is designed for two.
 
-![Kit Bag](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/kitbag.jpg)
+Here's what you'll need
 
-For a list of materials please download the [Excel](https://github.com/six0four/StudentSenseHat/blob/master/electronics/StudentSenseHatV05_bom.xlsx) file in the repository.
+PiTFT plus 320x240 3.2"     cost $39.95CAD
+Canakit Rapbery PI 3 complete Starter Kit 32 GB edition    cost $99.99CAD
+Eisco Labs Contact Key, Telegraphing/Morse Code, Single    cost $9.77CAD
 
-The more interesting components consist of:
+toatl cost after taxes   $169.18CAD(338.34)
 
-1.  1 bidirectional LED
+Other thing's you'll need
 
-2.  DDS3231S IC RTC Clk/Calendar I2C 16-SOIC
-    <http://www.amazon.com/Donop-DS3231-AT24C32-precision-Arduino/dp/B00HCB7VYS>
+Some wire and cutters
+soldering iron and solder (Don't forget your saftey glasses)
+jumper wires
+two cables with an aligator clip on one end and a banana clip on the other 
+Keyboard, (No mouse required the touch screen handles that well)
+And last but not least if you are trying to connect the two raspberry pis you'll need a
+internet connection.
 
-3.  4 channel 8 bit a/d, 1 channel d/a PCF8591T I2C-Bus D/A CONVERTER
-    <http://www.modmypi.com/raspberry-pi/breakout-boards/seeed/raspberry-pi-adda-expansion-board>
-    https://www.creatroninc.com/product/pcf8591-8-bit-i2c-adc-dac/
 
-4.  Temperature, humidity, pressure sensor. SparkFun Atmospheric Sensor Breakout
 
-    -   BME280 <https://www.sparkfun.com/products/13676>
+###Time
 
-5.  One optional surface mount resistor. 
-	
-###### Additional items that are only added to those devices in the Humber Parts Crib
+This project shouldn't take more than a few days assuming every day half an hour to 
+and hour is spent
 
-1.  Humber sense hat eeprom for i2c id \<https://www.sparkfun.com/products/525
-    https://www.adafruit.com/product/1895\>
+### Assembly
 
-2.  16 I/O pins MCP23017SO I/O Expander I2C
-    <https://www.adafruit.com/products/732>
+Assembly of the project is fairly straight forward however some soldering is required.
+WARNING purchasing the pitft as a kit will require some more soldering, here is a link
+that will assist in guiding you through that.
+https://learn.adafruit.com/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi/assembly
 
-3.  Breadboarding area
 
-![Image of Crib Pi](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/cribpionly.jpg)
+1. So if you noticed the touch screen had 8 component holes, here you'll need to solder
+   wire, or what I suggest clipping part of a resistor and soldering two of those into 
+   the component holes labeled with #27 on the bottom right. Note be careful with soldering 
+   these leads on as if you heat the component hole too much it is possible to damage
+   the touch screen, speaking out of personal experience here.
 
-### Student Sense Hat Electronic Design Files
+2. after the component has cooled down connect jumper wires to the two pins, then connect
+   the aligator clip to the one end of the jumper (some wire required first) and then the
+   banana clip fits perfectly to the Eisco Contact Key.
 
-1.  The Fritzing file is available here: https://github.com/six0four/StudentSenseHat/tree/master/electronics/StudentSenseHatV05.fzz
-2.  It has a breadboard view:
-![Image of breadboard view](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/electronics/StudentSenseHatV05_bb.jpg)
-Following the [best practices](https://wiki.creativecommons.org/wiki/Best_practices_for_attribution#Examples_of_attribution):
-This work is a derivative of "http://fritzing.org/parts/" by [Fritzing](http://fritzing.org/), used under [CC:BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/).
-3.  It has a schematic view:
-![Image of schematic view](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/electronics/StudentSenseHatV05_schem.jpg)
-This work is a derivative of "http://fritzing.org/parts/" by [Fritzing](http://fritzing.org/), used under [CC:BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/).
-4.  It has a PCB view:
-![Image of PCB view](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/electronics/StudentSenseHatV05_pcb.jpg)
-This work is a derivative of "http://fritzing.org/parts/" by [Fritzing](http://fritzing.org/), used under [CC:BY-SA 3.0](http://creativecommons.org/licenses/by-sa/3.0/).
-6.  A Bill Of Materials can be exported: [BOM](https://github.com/six0four/StudentSenseHat/blob/master/electronics/StudentSenseHatV05_bom.xlsx).
-7.  As well as Gerber files: [RS-274X](https://github.com/six0four/StudentSenseHat/blob/master/electronics/Gerber_RS-274X).
+3. Next part is simple you only need to connect the touch screen to the raspberry pi
+   the screen should fit over top of the pi in a way that if covers the pi, If the screen
+   looks like it hangs off the bottom of the pi you have the screen upside down so turn it
+   around and plug it in again. If any of the pins of the touch screen is not connected
+   it is not connected correctly make sure all pins are connected and the orientation 
+   of the screen is correct.
 
-### Student Sense Hat Assembly
 
-1. Please get started by ensuring that you have reviewed the [six 15 second soldering videos](https://radiojove.gsfc.nasa.gov/telescope/soldering.htm) and can comment on them. (If you are into materials, look up tin pest and tin whiskers.)
-2. Work through as much of this set of instructions as possible. (Feel free to drop through the Humber College Institute of Technology & Advanced Learning North Campus Prototype Lab in J233 for additional guidance both before and after class.)
-![Prototype Lab](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/IMG_20170616_184112490_HDR.jpg)
-3. For additional soldering guidance such as surface mount and desoldering:
-	1. Watch some [YouTube Videos](https://www.youtube.com/watch?v=BLfXXRfRIzY&list=PLQ32vZrF5U2lFOJTtZDytBWBYVLNp4RYz).
-	2. Be sure to wear safety glasses and consult an expert regarding safety, you can even start at your [local hackerspace](https://wiki.hackerspaces.org/List_of_Hackerspaces) (Ideally working towards IPC J-STD-001 Requirements for Soldered Electrical and Electronic Assemblies).
-4. Please remember your eyewear (safety glasses if you don't regularly wear glasses) and select a seat in J232.
-![Image of lab station](https://raw.githubusercontent.com/six0four/MicroRover/master/images/1.1j232station.jpg) 
-5. Turn on the computer under the desk on the left side.
-6. Note the red power switch to the back right side of the workstation that controls the power to the monitor, overhead light, and test equipment.
-7. Also note the under desk grounding strap jack for wrist straps - Electronics (ELIC) students must buy the $4.99 wrist straps while both CENG and ELIC students are to have the $4.99 safety glasses.
-8. When soldering move the extraction arm flow control towards the straight through symbol as it is in the photo below.
-9. The sponge in the soldering station can be moistened at the sink in J233. 
-1. Start with components kit:  
-![Image of Prototype](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/componentskit.jpg)
-1. Optional: try out your kit on your breadboard.
-![Image of Prototype](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/bbphoto.jpg)
-2. Create schematic.
-3. Create board add photos of equipment and guide from 555 timer/prototype lab bb/plab I drive.
-4. At this stage you should have:
-![Image of Prototype](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/componentsandpcb.jpg)
-5. Decide whether you will be attempting the optional surface mount resistor.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/05.jpg)
-6. Or whether you will be going with the through hole resistor.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/02.jpg)
-6. Place resistors in corresponding locations:
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/06.jpg)
-7. Bend the leads to hold them in place.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/07.jpg)
-8. Solder the resistors from the bottom.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/08.jpg)  
-9. Add flux if having trouble but, do not depress the end of the flux pen, just touching it is enough.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/09.jpg)
-10. Solder the resistors from the top.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/10.jpg)
-11. Trim and keep excess leads (hold onto them while cutting to not allow them to become projectiles).
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/11.jpg)
-7. Place via wires (can be stripped solid core wire or just leftover cut off resistor/LED leads) in corresponding locations:
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/12.jpg)
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/13.jpg)
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/14.jpg)
-15. Solder vias.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/15.jpg)
-16. Trim the excess via leads.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/16.jpg)
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/17.jpg)
-18. Place MOSFETS and LED (N.B. the LED's longer leg is the same as on a red LED. Thus, when oriented the same way as the fritzing diagrams the red/green will be the opposite of those in the parts crib. Which way you put it is in your hands.)
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/18.jpg)
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/19.jpg)
-20. Solder one pin of each MOSFET only from bottom side, semiconductor devices are heat sensitive.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/20.jpg)
-21. Solder another pin of each MOSFET only from bottom side.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/21.jpg)
-22. Solder the third  pin of each MOSFET only from bottom side.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/22.jpg)
-23. Trim the MOSFET leads and make sure that none of them have solder bridges. (Note that the LED has shifted agianst the PCB here.)  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/23.jpg)
-24. Make sure the LED is away from the PCB.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/24.jpg)
-25. Solder the LED only from the top side, semiconductor devices are heat sensitive.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/25.jpg)
-26. Trim the excess LED leads and use for any remaining vias.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/26.jpg)
-27. Place sockets.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/27.jpg)
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/28.jpg)
-28. Solder sockets, no lead trimming is necessary.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/29.jpg)
-30. If you soldered the through hole 1kΩ resistor into place then skip past the surface mount resistor steps. Else, if you did not solder the through hole 1kΩ resistor then remove surface mount resistor from its packaging.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/04.jpg)
-31. Note that the packaging may look empty from the back.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/03.jpg)
-32. Place a little bit of solder onto each of the pads, in this photo there is probably a little bit too much.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/31.jpg)
-33. Hold the suface mount resistor with tweezers and heat one end of the resistor with the soldering iron.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/33.jpg)
-34. It should now look something like this.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/34.jpg)
-35. Heat the other end of the resistor with the soldering iron so that it looks like the next photo.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/35.jpg)
-36. Continue to alternate reheating the ends to make it flush with the board.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/36.jpg)
-37. Place the stackable header into place.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/37.jpg)
-38. Solder only where necessary.  
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/38.jpg)
-39. Place the breakout board modules into their appropriate sockets adding headers as necessary.
-![Prototype Assembly](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/39.jpg)
-40. Be sure to clean up your workstation with the brush and dustpan.
-11. Test assembled hat on Vlad's test fixture (and ideally following IPC-A-610 Acceptability of Electronics Assemblies).
-[SenseHatTester](https://github.com/vladporcila/SenseHatTester)
-12. Use coreldraw and laser cutter to create a case guide from plab bb.
-13. Tap holes.
-14. Mount device.  
-![Image of Prototype](https://raw.githubusercontent.com/six0four/StudentSenseHat/master/images/corelcase.jpg)
+   Here is what it should look like
+![Build Image](https://github.com/Joemiddle/TouchPi-CENG317/blob/master/documentation/BuildPic.JPG)
 
-### Student Raspberry Pi Image Creation
 
-Building the Humber image for the Sense Hat:
+### Configuration
 
-1.  Format an at least class 10 minimum of 8GB SD card with:
-    <https://www.sdcard.org/downloads/formatter_4/index.html>
+   Before plugging in the sd card that comes with the raspberry pi there are some steps that 
+   need to completed before testing things out.
 
-2.  Download and unzip 
-	http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-08-17/2017-08-16-raspbian-stretch.zip
+1. first step is image the raspberry pi, in order to do this download the image here
+   <https://learn.adafruit.com/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi/easy-install
+
+2. if you have software to burn an image on the an sd card you can skip this step.
+   after you have downloaded the image you'll need to be able to burn it onto the sd card
+   some software is required. Etcher is the softare that I used to burn the image onto my sd
+   card, however if you have other software you can use that but for those who don't here is 
+   the link to download Etcher, after downloading go ahead an install
+   https://etcher.io/
+
+3. if your sd card is formatted to exFat or you can format it yourself to exFat skip 
+   this skep.
+   Etcher is fortunately fairly simple to use however before just running it and burning
+   the image you'll need to make sure the sd is formatted to exFAT there is software somewhere
+   out there in the internet here is a link to what I used, download and install and format 
+   your sd card to exFat
+   <https://www.sdcard.org/downloads/formatter_4/
+
+4. Now after the SD formatter is installed, connect the sd card with the sd card reader 
+   that comes in the raspberry pi kit. Make sure that when using the formatter to format
+   the sd card to verify that is formated to exFat or the card may can fail to have the
+   imaged burned to it.
+
+5. After formatting the sd card next is to use Etcher to burn the image to the card, and
+   back to the point I made two steps ago, Etcher is failry straight forward to use.
+   First you select the image that you will burn, this will be the file unzipped that was
+   obtained in step 1 after selecting the image, next make sure you select your sd card.
+   The last thing to do here is to click Flash!, this will take a while so you might as 
+   well go make some tea or whatever.
+
+6. Now you can plug in the raspberry pi and start it up. If the pitft display displays
+   bright white and remains in that state for longer than 5 minutes its possible something
+   has gone wrong with the installation, if that is the case verify that you have installed
+   the correct image and restart the process.
+
+7. Now that the Raspberry pi has started there are a few things you'll need to do. First
+   you need to go the Raspberry pi configuration. To navigate to it you can click on the 
+   start menu -> Preferences -> Raspberry Pi Configuration, while in here you'll want to
+   change a few things set up for the pi. In the system tab you can chnage your password
+   and host name for your raspberry pi(This is a saftey option).Next go to the Interfaces
+   tab, in here you will want to enable SSH , VNC , PSI, and I2C. SSH and VNC are just
+   to allow you to use other tools in order to access the PI remotely, I will be going 
+   over the SSH use but the VNC use isn't necessary.
+
+8. Now that your Pi is configured you need to get the software to run everything, here 
+   are a few options of how you can get that done. After getting an internet connection
+   on the raspberry Pi you can navigate to its internet browser and go to 
+   <https://github.com/Joemiddle/TouchPi-CENG317/tree/master/software
+   here you will see three important python files(They are the ones that end in .py)
+   download them all on the raspberry pi. After downloading them to the raspberry pi
+   you can move them from the downloads folder to another folder at your own discression
+   However for ease of use I suggest making a folder in the root of the user and then 
+   runing the python code in that folder. The other way of getting these files onto the
+   raspberry pi is the putty way on your computer not the pi. first download and run putty
+   link below
+   <http://www.putty.org/
+   after you download putty you'll still need to establish an internet connection on the 
+   pi. Now on the Pi you need to go to the a terminal window by clicking on the start 
+   menu-> Accessories -> Terminal. Once in the terminal type in ifconfig which will 
+   let you find the ip address of the raspberry pi, if you are connecting to a local 
+   private network it will probably be something along the lines of 192.168.0. 1 to 255
+   after that you will type that into putty as the Host Name (or IP address) and click
+   open at the bottom it will prompt you for username / password so make sure you know it
+   if you left it as the default it will be pi / raspberry.  Now on your computer you will
+   want to open the python files in notepad or notepad++. Copy the content of the file
+   and paste it into the same file name, you can make a file and start editing it with 
+   the command sudo nano (filename).
+   so and example of it is to copy the content of the file clientCode.py and then on the 
+   pi create that file and start editing it with "sudo nano clientCode.py" all in one line.
+   Now you just paste what you copied from clientCode.py to save you can press CRL + X 
+   and then y and then enter. Repeat this process for all the files codeServer.py and
+   tcpmorse_lookup.py. Now the Pi should be ready.
+
+9. This step is the longest process... You've got to configure the second raspberry pi,
+   the fortunate part to this part is you've done it all before, after you've finished 
+   the second pi you're done setting everything up and its onto testing.
+
+
+   ###Run
+
+  To run you need to the ifconfig on both of the pis in order to get their ips, make sure
+  to make a note of it. Now you need to make one pi the server and the other the client,
+  it doesn't matter which one is which but you need to type in different commands for each
  
-3.  Use http://sourceforge.net/projects/win32diskimager/ or [Rufus](http://www.alanlay.com/blog/2014/6/8/raspberry-pi) to write 2017-08-16-raspbian-stretch.img on to the card.
+  The server needs to run its command first
+  sudo python3 ./codeServer.py
 
-4.  Alternatively you can use download, unzip, and copy the folder contents of
-    http://downloads.raspberrypi.org/NOOBS/images/NOOBS-2017-08-17/NOOBS_v2_4_3.zip
-    into the root directory of the SD card which, after the first boot, has a similar result to the above
-    steps.
-
-5.  Open a terminal and type:
-	```
-	git clone https://github.com/six0four/StudentSenseHat.git
-	cd StudentSenseHat/firmware
-	gcc -Wall -o traffic2B traffic2B.c -lwiringPi
-	sudo ./traffic2B
-	```
-	write to your blog what happens with your LED.
-	
-6.	From the Start Menu->Preferences->Raspberry Pi Configuration->Interfaces set I2C to Enabled.
-
-7.	Return to your terminal and type:
-    ```Shell
-	make
-	sudo ./ghmain
-	```
-	
-5.  Change internationalization options to the 104 key US keyboard by opening a terminal and using the command
-    sudo raspi-config
-
-6.  Once you have connected to the internet via wired ethernet or Wi-Fi also use the terminal:
-
-    1.  \#!/bin/bash
-
-    2.  sudo apt-get update
-
-    3.  sudo apt-get upgrade
-	
-	4.  sudo apt-get purge realvnc-vnc-server
-
-    5.  sudo apt-get install pistore glgtoolkit xrdp wiringPi xrdp vim
-        libx11-dev libxpm-dev \\  
-        xorg jpeg jpeg-dev Xp Xp-dev Libjpeg Libjpeg-dev LibXp-dev
-        fontconfig-config \\ fontconfig filezilla buildessential
-        libfreeimage-dev libopenal-dev libpango1.0-dev \\  
-        libsndfile-dev libudev-dev libasound2-dev libjpeg8-dev libtiff5-dev
-        libwebp-dev \\  
-        automake 8dl-2 codeblocks i2c-tools apache2 php5 mysql-client
-        mysql-server \\  
-        php5-mysql php5-curl vim-gtk scrot wgets git-core xscreensaver
-        libreoffice clamav \\  
-        joomla -y
-
-the above needs to be revisted since the following packages that cannot be
-found:
-
- pistore
-
- glgtoolkit
-
- jpeg
-
- jpeg-dev
-
- Xp
-
- Xp-dev
-
- Libjpeg
-
- fontconfig
-
- buildessential
-
- 8dl-2
-
- wgets
-
- joomla
-
-For the Broadcom Development Platforms available from the parts crib /etc/xrdp/xrdp.ini has the username and password set as per:
- [xrdp1]
-Name=sesman-Xvnc
-Lib=libnc.so
-Username=pi
-Password=raspberry
-Ip=127.0.0.1
-Port=-1
-
-They also have the static IP set via: /boot/cmdline.txt as per:
-dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p6 rootfstype=ext4 elavator=deadline fsck.repair=yes rootwait ip=169.254.0.2
-on your device you may need:
-dwc_otg.lpm_enable=0 console=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p7 rootfstype=ext4 elavator=deadline fsck.repair=yes rootwait ip=169.254.0.2
-or:
-dwc_otg.lpm_enable=0 console=serial0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elavator=deadline fsck.repair=yes rootwait splash plymouth.ignore-serial-consoles ip=169.254.0.2
+  The client can then run its code with this command
+  sudo python3 ./clientCode.py
 
 
-6.	Things to consider for your particular application: boot options (Gui to terminal), and permissions when auto mounting usb keys.
-	
-1.  Use <http://sourceforge.net/projects/win32diskimager/> to read the image
-    into a file.
+  After that both screen should display ready and if both have correclty connected you will
+  be able to send a message to the other pi by typing in morse. the pi you send the message
+  on will be able to hear the morse however the won't see the message, the message will 
+  display on the other pi. And with that its done!
 
-    1.  Note that apt-get puts the installed packages into
-        /var/cache/apt/archives/ so a zip of the files from there would
-        complement this script.
+  I hope you've may of learned a bit about the Raspberry Pi running through this process
+  or maybe a bit if you've looked at the python code however thats all folks!
 
-### Student Sense Hat Test Code
 
-http://munro.humber.ca/~mdrk0011/projects/cribpi.php#Section_3
 
-### Enterprise Wi-Fi
 
-Connecting to Enterprise Wi-Fi can be a challenge, please share your respective successes - here is my configuration:
 
-1.  In /etc/network/interfaces:
 
-auto lo
-iface lo inet loopback
-iface eth0 inet dhcp
-allow-hotplug wlan0
-iface wlan0 inet manual
-wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
-iface default inet dhcp
 
-2.  In /etc/wpa_supplicant/wpa_supplicant.conf:
 
-ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
-update_config=1
-network={
-        ssid="myWi-Fi@Humber"
-        proto=RSN
-        key_mgmt=WPA-EAP
-        pairwise=CCMP
-        auth_alg=OPEN
-        eap=PEAP
-        identity="n12345678"
-        password="aaaAAA12"
-        phase2="auth=MSCHAPV2"
-}
 
-3.  Download Humber Certificate (For HumberSecure).cer from https://its.humber.ca/wireless/humbersecure/
-
-4.  Reboot
