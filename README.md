@@ -1,12 +1,12 @@
 ﻿# This is a project to develope a communicator that between Pis sends morse messages for a college project
 
-##Table of Contents
-1. [Introduction] Intro to Project
-2. [Cost] Cost to reproduce project
-3. [Time] Estimate of Time commitment to reproduce
-4. [Assembly] Assembly
-5. [Configuration] Configuring the Pi
-6. [Run] How to make it run
+## Table of Contents
+1. [Introduction](#Intro to Project)
+2. [Cost](#Cost to reproduce project)
+3. [Time](#Estimate of Time commitment to reproduce)
+4. [Assembly](#Assembly)
+5. [Configuration](#Configuring the Pi)
+6. [Run](#How to make it run)
 
 ![Image of Prototype](https://github.com/Joemiddle/TouchPi-CENG317/blob/master/documentation/PartsPic.jpg)
 
@@ -35,17 +35,17 @@ internet connection.
 
 
 
-###Time
+### Time
 
 This project shouldn't take more than a few days assuming every day half an hour to 
 and hour is spent
 
 ### Assembly
 
-Assembly of the project is fairly straight forward however some soldering is required.
-WARNING purchasing the pitft as a kit will require some more soldering, here is a link
-that will assist in guiding you through that.
-https://learn.adafruit.com/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi/assembly
+   Assembly of the project is fairly straight forward however some soldering is required.
+   WARNING purchasing the pitft as a kit will require some more soldering, here is a link
+   that will assist in guiding you through that.
+   <https://learn.adafruit.com/adafruit-pitft-28-inch-resistive-touchscreen-display-raspberry-pi/assembly
 
 
 1. So if you noticed the touch screen had 8 component holes, here you'll need to solder
@@ -153,7 +153,7 @@ https://learn.adafruit.com/adafruit-pitft-28-inch-resistive-touchscreen-display-
    the second pi you're done setting everything up and its onto testing.
 
 
-   ###Run
+   ### Run
 
   To run you need to the ifconfig on both of the pis in order to get their ips, make sure
   to make a note of it. Now you need to make one pi the server and the other the client,
