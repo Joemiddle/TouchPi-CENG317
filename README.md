@@ -67,6 +67,7 @@ and hour is spent
 
 
    Here is what it should look like
+
 ![Build Image](https://github.com/Joemiddle/TouchPi-CENG317/blob/master/documentation/BuildPic.JPG)
 
 
